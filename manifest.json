@@ -2,7 +2,7 @@
   "name": "Sorso · Wine Companion",
   "short_name": "Sorso",
   "description": "Your Tuscan wine companion. Read any bottle.",
-  "start_url": "./",
+  "start_url": "./?launch=1",
   "scope": "./",
   "display": "browser",
   "background_color": "#4a0f1c",

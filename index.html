@@ -10,6 +10,13 @@
 <meta name="apple-mobile-web-app-title" content="Sorso">
 <meta name="application-name" content="Sorso">
 <meta name="theme-color" content="#4a0f1c">
+<script>
+/* Home-screen launches carry ?launch=1 and go straight into Sorso.
+   A normal visit quietly adds ?launch=1 to the address, so "Add to Home Screen" saves the direct-launch URL. */
+(function(){var APP='https://claude.ai/artifact/TjxJ483qpxZDtxC7hJcZV8';
+ if(/[?&]launch=1(&|$)/.test(location.search)){document.documentElement.className='go';location.replace(APP);}
+ else{try{history.replaceState(null,'',location.pathname+'?launch=1'+location.hash)}catch(e){}}})();
+</script>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@1,9..144,500&family=Figtree:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
 /*
@@ -33,6 +40,10 @@ h1 span{color:#e8aa47}
 .tip{background:rgba(30,8,12,.55);border:1px solid rgba(255,248,236,.18);border-radius:16px;padding:14px 16px;font-size:14px;text-align:left;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
 .tip b{color:#f6d28e}
 .tip p{margin:0 0 6px}.tip p:last-child{margin:0}
+.wait{display:none;margin:0;font-size:15px;opacity:.85}
+html.go body{background:#4a0f1c}html.go body::before{display:none}
+html.go .tag,html.go .tip,html.go .go{display:none}html.go .wait{display:block}
+html.go.slow .go{display:flex}
 </style>
 </head>
 <body>
@@ -40,6 +51,7 @@ h1 span{color:#e8aa47}
   <img class="icon" src="sorso-icon-512.png" alt="Sorso logo: a wine drop holding the Tuscan hills">
   <h1>Sorso<span>.</span></h1>
   <p class="tag">Your Tuscan wine companion</p>
+  <p class="wait">Opening…</p>
   <a class="go" href="https://claude.ai/artifact/TjxJ483qpxZDtxC7hJcZV8">Open Sorso</a>
   <div class="tip" id="tip">
     <p><b>Keep Sorso on your home screen.</b> iPhone: tap Share in Safari, then <b>Add to Home Screen</b>. Android: tap ⋮ in Chrome, then <b>Add to Home screen</b>.</p>
@@ -50,6 +62,7 @@ h1 span{color:#e8aa47}
 {
   const standalone = (window.navigator.standalone === true) || (window.matchMedia && matchMedia('(display-mode: standalone)').matches);
   if (standalone) document.getElementById('tip').hidden = true;
+  if (document.documentElement.classList.contains('go')) setTimeout(function(){document.documentElement.classList.add('slow')}, 2500);
 }
 </script>
 </body>
