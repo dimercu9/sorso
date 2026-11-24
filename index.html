@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Sorso</title>
+<link rel="apple-touch-icon" href="sorso-icon-180.png">
+<link rel="icon" type="image/png" sizes="192x192" href="sorso-icon-192.png">
+<link rel="manifest" href="manifest.json">
+<meta name="apple-mobile-web-app-title" content="Sorso">
+<meta name="application-name" content="Sorso">
+<meta name="theme-color" content="#4a0f1c">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@1,9..144,500&family=Figtree:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+/*
+VOICE: a doorway — calm, warm, one action
+IDEA: the cellar door of a Tuscan estate at golden hour
+PICTURE: the vineyard scene full-bleed, the La Goccia icon as the sign over the door
+COLOUR and TYPE: vino rosso, Siena gold, cream; Fraunces italic wordmark, Figtree
+LAYOUT: one centred column, icon, name, button, tip
+*/
+:root{color-scheme:light}
+*{box-sizing:border-box;min-width:0}
+body{margin:0;min-height:100vh;min-height:100dvh;font:16px/1.5 Figtree,system-ui,sans-serif;color:#fff8ec;background:#4a0f1c url(launch-bg.jpg) center/cover no-repeat;display:grid;place-items:center;overflow-x:clip}
+body::before{content:"";position:fixed;inset:0;background:linear-gradient(180deg,rgba(40,8,14,.55),rgba(40,8,14,.2) 40%,rgba(40,8,14,.78));pointer-events:none}
+main{position:relative;width:min(420px,100%);padding:48px 24px;text-align:center;display:grid;justify-items:center;gap:18px}
+.icon{width:132px;height:132px;border-radius:30px;box-shadow:0 18px 40px -12px rgba(20,4,8,.7)}
+h1{margin:0;font:italic 500 56px/1 Fraunces,Georgia,serif;text-shadow:0 2px 18px rgba(20,4,8,.45)}
+h1 span{color:#e8aa47}
+.tag{margin:-6px 0 6px;font-size:17px;opacity:.92}
+.go{display:flex;align-items:center;justify-content:center;width:100%;min-height:56px;border-radius:16px;background:#e8aa47;color:#2b1915;font-weight:700;font-size:18px;text-decoration:none;box-shadow:0 10px 26px -10px rgba(0,0,0,.6)}
+.go:focus-visible{outline:3px solid #fff8ec;outline-offset:3px}
+.tip{background:rgba(30,8,12,.55);border:1px solid rgba(255,248,236,.18);border-radius:16px;padding:14px 16px;font-size:14px;text-align:left;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+.tip b{color:#f6d28e}
+.tip p{margin:0 0 6px}.tip p:last-child{margin:0}
+</style>
+</head>
+<body>
+<main>
+  <img class="icon" src="sorso-icon-512.png" alt="Sorso logo: a wine drop holding the Tuscan hills">
+  <h1>Sorso<span>.</span></h1>
+  <p class="tag">Your Tuscan wine companion</p>
+  <a class="go" href="https://claude.ai/artifact/TjxJ483qpxZDtxC7hJcZV8">Open Sorso</a>
+  <div class="tip" id="tip">
+    <p><b>Keep Sorso on your home screen.</b> iPhone: tap Share in Safari, then <b>Add to Home Screen</b>. Android: tap ⋮ in Chrome, then <b>Add to Home screen</b>.</p>
+    <p>Sorso opens in the Claude app or on claude.ai. Stay signed in to Claude to scan bottles and chat with the sommelier.</p>
+  </div>
+</main>
+<script>
+{
+  const standalone = (window.navigator.standalone === true) || (window.matchMedia && matchMedia('(display-mode: standalone)').matches);
+  if (standalone) document.getElementById('tip').hidden = true;
+}
+</script>
+</body>
+</html>
